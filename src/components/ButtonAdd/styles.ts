@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
      backgroundColor: theme.colors.primary,
      borderRadius: 8,
      alignItems: 'center',
-     justifyContent: 'center'    
+     justifyContent: 'center'  ,
+     fontFamily: theme.fonts.text500,  
     },
 });

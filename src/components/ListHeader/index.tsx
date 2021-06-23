@@ -22,7 +22,7 @@ export function ListHeader({ title, subtitle }: Props) {
                 {title}
             </Text>
 
-            <Text style={styles.title}>
+            <Text style={styles.subtitle}>
                 {subtitle}
             </Text>
            

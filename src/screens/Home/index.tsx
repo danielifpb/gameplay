@@ -11,6 +11,7 @@ import { ListDivider } from '../../components/ListDivider';
 
 import { Background } from '../../components/Background'; 
 import { styles } from './styles';
+import { ButtonIcon } from '../../components/Buttonicon';
 
 export function Home() {
     const [category, setCategory] = useState('');
@@ -51,12 +52,17 @@ export function Home() {
     function handleAppointmentDetails(){
         navigation.navigate('AppointmentDetails');
     }
+    function handleAppointmentCreate(){
+        navigation.navigate('AppointmentCreate');
+    }
 
-    return (
+        return (
         <Background>
-            <View style={styles.header}>
+            <View style={styles.header} >
                 <Profile />
-                <ButtonAdd />
+                <ButtonAdd 
+                    onPress={handleAppointmentCreate} 
+                />
             </View>
 
 
