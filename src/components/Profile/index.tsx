@@ -1,16 +1,35 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Alert } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
+import { useAuth } from '../../hooks/auth';
 import { Avatar } from '../Avatar';
 
 import { styles } from './styles';
 
 
 export function Profile(){
+    const { user, singOut } = useAuth();
+
+    function handleSignOut() {
+        Alert.alert('Sair', 'Deseja sair do GamePlay?',
+        [
+            {
+                text: 'Não',
+                style:'cancel'
+            },
+            {
+                text: 'Sim',
+                onPress: () => singOut()
+            }
+        ])
+    }
+
     return(
         <View style={styles.container}> 
 
-        <Avatar urlImage="https://instagram.fcpv5-1.fna.fbcdn.net/v/t51.2885-15/e35/122027092_268520137800632_7740387787243125725_n.jpg?tp=1&_nc_ht=instagram.fcpv5-1.fna.fbcdn.net&_nc_cat=108&_nc_ohc=8Ip2YeUxXHcAX-NTN9_&edm=AABBvjUBAAAA&ccb=7-4&oh=fd550dec15ed052eb65e80fd5857af5f&oe=60D80EF4&_nc_sid=83d603"/>
-
+            <RectButton onPress={handleSignOut}>
+                <Avatar urlImage={user.avatar}/>
+            </RectButton>
             <View>
                 <View style={styles.user}>
                     <Text style={styles.greeting}>
@@ -18,7 +37,7 @@ export function Profile(){
                     </Text>
 
                     <Text style={styles.username}>
-                        Daniel
+                        {user.firstName}
                     </Text>
                 </View>
 
